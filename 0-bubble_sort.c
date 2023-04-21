@@ -30,7 +30,7 @@ void bubble_sort(int *array, size_t size)
 				array[i] = array[i + 1];
 				array[i + 1] = temp;
 				#if PRINT_AFTER_SWAP
-				print_array(array, size);
+				print_array(array, size + 1);
 				#endif
 			}
 		}
