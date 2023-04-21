@@ -3,8 +3,8 @@
 #define PRINT_AFTER_SWAP	1
 
 /**
- * bubble_sort - sorts an array of integers in ascending order using the
- *  Bubble sort algorithm
+ * selection_sort - sorts an array of integers in ascending order using the
+ *  Selection sort algorithm
  * @array: The array to be sorted
  * @size: The length of the array
  *
