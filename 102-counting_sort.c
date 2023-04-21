@@ -15,9 +15,8 @@ void counting_sort(int *array, size_t size)
 	size_t i, j;
 	int *cnt_arr, max;
 
-	if (size == 0)
+	if ((array == NULL) || (size == 0))
 	{
-		print_array(NULL, 0);
 		return;
 	}
 	max = array[0];
@@ -29,14 +28,13 @@ void counting_sort(int *array, size_t size)
 	cnt_arr = malloc((++max) * sizeof(int));
 	if (cnt_arr == NULL)
 	{
-		print_array(NULL, 0);
 		return;
 	}
-	for (i = 0; i < (size_t)max; i++)
+	for (i = 0; i < (size_t)max; i++)	/* Clearing counts */
 		cnt_arr[i] = 0;
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size; i++)	/* Counting occurences of each array element */
 		cnt_arr[array[i]]++;
-	for (i = 1; i < (size_t)max; i++)
+	for (i = 1; i < (size_t)max; i++)	/* Getting cumulative sum */
 		cnt_arr[i] += cnt_arr[i - 1];
 	print_array(cnt_arr, max);
 	for (i = 0, j = 0; i < (size_t)max; i++)
