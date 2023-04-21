@@ -15,28 +15,29 @@ void counting_sort(int *array, size_t size)
 	size_t i, j;
 	int *cnt_arr, max;
 
-	if ((array == NULL) || (size == 0))
-	{
+	if ((array == NULL) || (size <= 1))
 		return;
-	}
+
 	max = array[0];
-	for (i = 1; i < size; i++)
+	for (i = 1; i < size; i++)	/* Getting largest array element */
 	{
 		if (array[i] > max)
 			max = array[i];
 	}
 	cnt_arr = malloc((++max) * sizeof(int));
 	if (cnt_arr == NULL)
-	{
 		return;
-	}
+
 	for (i = 0; i < (size_t)max; i++)	/* Clearing counts */
 		cnt_arr[i] = 0;
 	for (i = 0; i < size; i++)	/* Counting occurences of each array element */
 		cnt_arr[array[i]]++;
 	for (i = 1; i < (size_t)max; i++)	/* Getting cumulative sum */
 		cnt_arr[i] += cnt_arr[i - 1];
+	#if PRINT_COUNT_ARRAY
 	print_array(cnt_arr, max);
+	#endif
+
 	for (i = 0, j = 0; i < (size_t)max; i++)
 		for (; j < (size_t)cnt_arr[i]; j++)
 			array[j] = i;
