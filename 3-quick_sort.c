@@ -60,7 +60,7 @@ static void partitioned_quick_sort(
 {
 	size_t pivot;
 
-	if (beg >= end)
+	if ((beg >= end) || (size < 2))
 		return;
 	pivot = partition(array, size, beg, end);
 
