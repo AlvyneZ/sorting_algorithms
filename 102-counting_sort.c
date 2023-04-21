@@ -42,4 +42,5 @@ void counting_sort(int *array, size_t size)
 	for (i = 0, j = 0; i < (size_t)max; i++)
 		for (; j < (size_t)cnt_arr[i]; j++)
 			array[j] = i;
+	free(cnt_arr);
 }
