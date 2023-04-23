@@ -16,32 +16,33 @@
 static void radix_sort_rec(int *array, size_t size, int place, int base)
 {
 	size_t i, j;
-	int *tmp_arr, c;
+	int *tmp_arr, *cpy_arr, c;
 
 	for (i = 0; i < size; i++)
 		if (array[i] >= place)
 			break;
 	if (i >= size)
 		return;
-	tmp_arr = malloc(2 * size * sizeof(int));
+	tmp_arr = malloc(size * sizeof(int));
 	if (tmp_arr == NULL)
 		return;
+	cpy_arr = malloc(size * sizeof(int));
+	if (cpy_arr == NULL)
+	{
+		free(tmp_arr);
+		return;
+	}
 	for (i = 0; i < size; i++)
 	{
 		tmp_arr[i] = (array[i] / place) % base;
-		tmp_arr[i + size] = array[i];
+		cpy_arr[i] = array[i];
 	}
 	for (i = 0, c = 0; c < base; c++)
-	{
 		for (j = 0; j < size; j++)
-		{
 			if (tmp_arr[j] == c)
-			{
-				array[i++] = tmp_arr[j + size];
-			}
-		}
-	}
+				array[i++] = cpy_arr[j];
 	free(tmp_arr);
+	free(cpy_arr);
 	#if PRINT_AFT_SIG_CHNG
 	print_array(array, size);
 	#endif
