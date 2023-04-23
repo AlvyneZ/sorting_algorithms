@@ -58,5 +58,7 @@ static void radix_sort_rec(int *array, size_t size, int place, int base)
  */
 void radix_sort(int *array, size_t size)
 {
+	if ((size <= 1) || (array == NULL))
+		return;
 	radix_sort_rec(array, size, 1, 10);
 }
