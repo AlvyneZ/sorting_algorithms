@@ -13,6 +13,7 @@ The 0-O, 1-O, ... files give the time complexities of the implemented sorting al
 - n * log(n) -> O(nlog(n))
 - n + k -> O(n+k)
 - ...
+
 And with the following order:
 1. in the best case
 2. in the average case
