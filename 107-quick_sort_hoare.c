@@ -21,9 +21,11 @@ static inline size_t partition(
 	for (i = end, piv = end; ;)	/* loop forever */
 	{
 		/* Get first element from left bigger than pivot */
-		for (; ((beg <= end) && (array[beg] <= array[piv])); beg++);
+		for (; ((beg <= end) && (array[beg] <= array[piv])); beg++)
+		;
 		/* Get first element from right equaling/smaller than pivot */
-		for (; ((i > beg) && (array[i] > array[piv])); i--);
+		for (; ((i > beg) && (array[i] > array[piv])); i--)
+		;
 		/* Swap as long as counters haven't crossed */
 		if (beg < i)
 		{
@@ -33,7 +35,8 @@ static inline size_t partition(
 			#if PRINT_AFTER_SWAP
 			print_array(array, size);
 			#endif
-			if (piv == i)piv = beg;
+			if (piv == i)
+				piv = beg;
 		}
 		else
 		{
@@ -77,7 +80,7 @@ static void partitioned_quick_sort(
 }
 
 /**
- * quick_sort - sorts an array of integers in ascending order using the
+ * quick_sort_hoare - sorts an array of integers in ascending order using the
  *  partition-exchange sort / quick-sort algorithm
  * @array: The array to be sorted
  * @size: The length of the array
